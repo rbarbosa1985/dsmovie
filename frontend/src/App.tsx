@@ -1,6 +1,9 @@
+import Navbar from "./components/Navbar";
+
 function App() {
   return (
-    <h1>Oi</h1>
+    <Navbar />
+
   );
 }
 
