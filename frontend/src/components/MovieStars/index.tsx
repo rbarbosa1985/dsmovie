@@ -1,6 +1,3 @@
-import { ReactComponent as StarFull } from 'assets/starfull.svg';
-import { ReactComponent as StarHalf } from 'assets/starhalf.svg';
-import { ReactComponent as StarEmpty } from 'assets/starempty.svg';
 import Star from 'components/Star';
 
 type Props = {
