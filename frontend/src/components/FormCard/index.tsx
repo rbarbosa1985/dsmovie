@@ -10,32 +10,32 @@ type Props = {
      movieId: String;
 }
 
-function FormCard( {movieId} : Props) {
-    
-    const navigate = useNavigate(); 
+function FormCard({ movieId }: Props) {
 
-    const [movie, setMovie] = useState<Movie>();
+     const navigate = useNavigate();
 
-    useEffect(() => {
-        axios.get(`${BASE_URL}/movies/${movieId}`)
-        .then(reponse => {
-            setMovie(reponse.data);
-        });
-    }, [movieId]);
+     const [movie, setMovie] = useState<Movie>();
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+     useEffect(() => {
+          axios.get(`${BASE_URL}/movies/${movieId}`)
+               .then(reponse => {
+                    setMovie(reponse.data);
+               });
+     }, [movieId]);
+
+     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();
           const email = (event.target as any).email.value;
           const score = (event.target as any).score.value;
           if (!validateEmail(email)) {
                return;
           }
-          
-          const config: AxiosRequestConfig ={
+
+          const config: AxiosRequestConfig = {
                baseURL: BASE_URL,
                method: 'PUT',
-               url: '/scores',
-               data:{
+               url: '/score',
+               data: {
                     email: email,
                     movieId: movieId,
                     score: score
@@ -43,13 +43,13 @@ function FormCard( {movieId} : Props) {
           }
 
           axios(config)
-          .then(response => {
-               navigate("/");
-          });
-          
-    }
+               .then(response => {
+                    navigate("/");
+               });
 
-    return (
+     }
+
+     return (
           <div className="dsmovie-form-container">
                <img className="dsmovie-movie-card-image" src={movie?.image} alt={movie?.title} />
                <div className="dsmovie-card-bottom-container">
